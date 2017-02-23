@@ -10,9 +10,11 @@ RUN apt-get update && \
       php5-cli \
       libapache2-mod-php5 \
       php5-gd \
-      php5-ldap \
-      php5-mysql \
-      php5-pgsql
+      php5-mcrypt \      
+      php5-mysql 
+
+# add memory to php
+RUN sed -i s/128M/512M/g /etc/php5/apache2/php.ini
 
 COPY apache_default /etc/apache2/sites-available/default
 COPY run /usr/local/bin/run
